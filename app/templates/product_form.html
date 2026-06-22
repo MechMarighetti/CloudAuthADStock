@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Producto{% endblock %}
+
+{% block body %}
+  <h2>Formulario de producto</h2>
+  <form method="post">
+    {{ form.hidden_tag() }}
+    <div>{{ form.nombre.label }}<br>{{ form.nombre() }}</div>
+    <div>{{ form.descripcion.label }}<br>{{ form.descripcion() }}</div>
+    <div>{{ form.stock_actual.label }}<br>{{ form.stock_actual() }}</div>
+    <div>{{ form.stock_minimo.label }}<br>{{ form.stock_minimo() }}</div>
+    <div>{{ form.precio.label }}<br>{{ form.precio() }}</div>
+    <div>{{ form.submit() }}</div>
+  </form>
+{% endblock %}

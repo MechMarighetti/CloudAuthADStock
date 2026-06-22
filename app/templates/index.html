@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio - FlaskCloud-ADauthStock{% endblock %}
+
+{% block body %}
+  <h2>Inicio</h2>
+  <p>Aplicación: FlaskCloud-ADauthStock — Gestión de stock con autenticación AD.</p>
+
+  <section>
+    <h3>Productos</h3>
+    <a href="{{ url_for('main.products') }}">Ver todos los productos</a>
+    {% if 'Admin' in (current_user.roles or '') %}
+      | <a href="{{ url_for('main.product_new') }}">Nuevo producto</a>
+    {% endif %}
+  </section>
+
+  <section>
+    <h3>Movimientos</h3>
+    <a href="{{ url_for('main.movements') }}">Registrar movimiento / Ver movimientos</a>
+  </section>
+
+  <section>
+    <h3>Reportes</h3>
+    <a href="{{ url_for('main.export_products_csv') }}">Exportar productos (.csv)</a> |
+    <a href="{{ url_for('main.export_movements_csv') }}">Exportar movimientos (.csv)</a>
+  </section>
+
+{% endblock %}

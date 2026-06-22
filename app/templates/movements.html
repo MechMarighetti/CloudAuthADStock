@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Movimientos{% endblock %}
+
+{% block body %}
+  <h2>Movimientos</h2>
+  <form method="post">
+    {{ form.hidden_tag() }}
+    <div>{{ form.producto_id.label }}<br>{{ form.producto_id() }}</div>
+    <div>{{ form.tipo.label }}<br>{{ form.tipo() }}</div>
+    <div>{{ form.cantidad.label }}<br>{{ form.cantidad() }}</div>
+    <div>{{ form.submit() }}</div>
+  </form>
+
+  <h3>Últimos movimientos</h3>
+  <table>
+    <thead><tr><th>ID</th><th>Producto</th><th>Tipo</th><th>Cantidad</th><th>Fecha</th><th>Usuario</th></tr></thead>
+    <tbody>
+      {% for m in movements %}
+        <tr>
+          <td>{{ m.id }}</td>
+          <td>{{ m.producto.nombre }}</td>
+          <td>{{ m.tipo }}</td>
+          <td>{{ m.cantidad }}</td>
+          <td>{{ m.fecha }}</td>
+          <td>{{ m.usuario }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
