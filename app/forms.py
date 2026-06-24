@@ -11,10 +11,16 @@ class LoginForm(FlaskForm):
 
 class ProductForm(FlaskForm):
     nombre = StringField('Nombre', validators=[DataRequired()])
+    genero = StringField('Género', validators=[DataRequired()])
+    altura = SelectField('Altura', choices=[('baja', 'Baja'), ('media', 'Media'), ('alta', 'Alta')])
+    tipo_servicio = SelectField('Tipo de servicio', choices=[('SaaS', 'SaaS'), ('PaaS', 'PaaS'), ('IaaS', 'IaaS')])
+    capacidad_almacenamiento = FloatField('Almacenamiento (GB)')
+    capacidad_procesamiento = FloatField('Procesamiento (vCPUs)')
+    memoria_ram = FloatField('Memoria RAM (GB)')
+    precio_mensual = FloatField('Precio mensual ($)')
+    escalable = bool('Escalable')
     descripcion = TextAreaField('Descripción')
-    stock_actual = IntegerField('Stock actual', validators=[NumberRange(min=0)])
-    stock_minimo = IntegerField('Stock mínimo', validators=[NumberRange(min=0)])
-    precio = FloatField('Precio')
+    stock_disponible = IntegerField('Stock disponible', validators=[NumberRange(min=0)], default=0)
     submit = SubmitField('Guardar')
 
 
@@ -23,3 +29,6 @@ class MovementForm(FlaskForm):
     tipo = SelectField('Tipo', choices=[('entrada', 'Entrada'), ('salida', 'Salida')])
     cantidad = IntegerField('Cantidad', validators=[DataRequired(), NumberRange(min=1)])
     submit = SubmitField('Registrar movimiento')
+
+    def __repr__(self):
+        return f'<Nube {self.genero} ({self.tipo_servicio})>'

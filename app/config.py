@@ -7,7 +7,7 @@ class Config:
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         'DATABASE_URL', 'sqlite:///flaskcloud_adauthstock.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    LDAP_SERVER = os.environ.get('LDAP_SERVER', 'ldap://localhost:389')
+    LDAP_SERVER = os.environ.get('LDAP_SERVER', 'ldap://192.168.56.10')
     LDAP_DOMAIN = os.environ.get('LDAP_DOMAIN', 'ifts.local')
     REMEMBER_COOKIE_DURATION = timedelta(days=7)
 

@@ -4,15 +4,18 @@
 
 {% block body %}
   <h2>Productos</h2>
-  <table>
-    <thead><tr><th>ID</th><th>Nombre</th><th>Stock</th><th>Precio</th><th>Acciones</th></tr></thead>
+  <table class="tables">
+    <thead><tr><th>ID</th><th>Nombre</th><th>Stock</th><th>Almacenamiento</th><th>Procesamiento</th><th>Memoria RAM</th><th>Precio</th><th>Acciones</th></tr></thead>
     <tbody>
       {% for p in products %}
         <tr>
           <td>{{ p.id }}</td>
           <td>{{ p.nombre }}</td>
-          <td>{{ p.stock_actual }}</td>
-          <td>{{ p.precio }}</td>
+          <td>{{ p.stock_disponible }} inst.</td>
+          <td>{{ p.capacidad_almacenamiento }} Tb</td>
+          <td>{{ p.capacidad_procesamiento }}Gb</td>
+          <td>{{ p.memoria_ram }} Gb</td>
+          <td>{{ p.precio_mensual }} US$D</td>
           <td>
             {% if 'Admin' in (current_user.roles or '') %}
               <a href="{{ url_for('main.product_edit', product_id=p.id) }}">Editar</a>
